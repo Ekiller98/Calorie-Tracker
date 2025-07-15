@@ -14,7 +14,7 @@ export default function Login(){
 
     return (
         <div className = "max-w-md mx-auto mt-10 p-6 bg-white rounded shadow">
-            <h2 className = "text-2xl font-bold mb-6 text-center">Login to FitTrack </h2>
+            <h2 className = "text-2xl font-bold mb-6 text-center">Login to Lose N Bulk </h2>
             <form onSubmit = {handleSubmit} className = "flex flex-col gap-4">
                 <input
                     type = "email"
