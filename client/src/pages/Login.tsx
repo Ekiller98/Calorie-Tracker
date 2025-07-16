@@ -22,7 +22,7 @@ export default function Login(){
 
             if (response.ok) {
                 alert(`✅ ${data.message}`);
-                console.log(data); // You can use this to store tokens later
+                console.log(data); //use this to store tokens later
             
             } else {
                 alert(`❌ Error: ${data.message}`);
