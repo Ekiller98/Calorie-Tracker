@@ -6,11 +6,33 @@ export default function Login(){
     const [password, setPassword] = useState('')
 
     //handler for form submit
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault() // prevents page reload
-        alert(`Logging in with Email: ${email} and Password ${password}`)
-        //will connect backend authentication service later
-    }
+        
+        try {
+            const response = await fetch('http://localhost:5000/api/login', {
+                method: 'POST', 
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert(`✅ ${data.message}`);
+                console.log(data); // You can use this to store tokens later
+            
+            } else {
+                alert(`❌ Error: ${data.message}`);
+            } 
+        } catch (error) {
+                console.error("Login error:", error);
+                alert("Something went wrong. Try again.");
+
+            }
+        };
 
     return (
         <div className = "max-w-md mx-auto mt-10 p-6 bg-white rounded shadow">
